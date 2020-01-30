@@ -67,9 +67,10 @@ void LfpDisplayNode::updateSettings()
 {
     std::cout << "Setting num inputs on LfpDisplayNode to " << getNumInputs() << std::endl;
 
-    channelForEventSource.clear();
+    channelForEvents = getNumInputs();
     eventSourceNodes.clear();
     ttlState.clear();
+    aggTTLState = 0;
 
     for (int i = 0; i < eventChannelArray.size(); ++i)
     {
@@ -77,21 +78,19 @@ void LfpDisplayNode::updateSettings()
         if (!eventSourceNodes.contains(sourceID))
         {
             eventSourceNodes.add(sourceID);
-
         }
     }
 
-    numEventChannels = eventSourceNodes.size();
+    numEventChannels = 1;
 
     std::cout << "Found " << numEventChannels << " event channels." << std::endl;
 
     for (int i = 0; i < eventSourceNodes.size(); ++i)
     {
-        std::cout << "Adding channel " << getNumInputs() + i << " for event source node " << eventSourceNodes[i] << std::endl;
-
-        channelForEventSource[eventSourceNodes[i]] = getNumInputs() + i;
+        std::cout << "Adding channel " << channelForEvents << " for event source node " << eventSourceNodes[i] << std::endl;
         ttlState[eventSourceNodes[i]] = 0;
     }
+    aggTTLState = 0;
 
     displayBufferIndex.clear();
     displayBufferIndex.insertMultiple (0, 0, getNumInputs() + numEventChannels);
@@ -164,13 +163,6 @@ void LfpDisplayNode::setParameter (int parameterIndex, float newValue)
         ed->canvas->setParameter (parameterIndex, newValue);
 }
 
-std::list<int> LfpDisplayNode::eventStateChannels() const {
-  std::list<int> cc;
-  for (uint32 id: eventSourceNodes)
-    cc.push_back(channelForEventSource.find(id)->second);
-  return cc;
-}                 
-
 void LfpDisplayNode::handleEvent(const EventChannel* eventInfo,
                                  const MidiMessage& event, int samplePosition) {
   if (Event::getEventType(event) == EventChannel::TTL) {
@@ -196,12 +188,12 @@ void LfpDisplayNode::initializeEventChannels() {
   latestCurrentTrigger = -1;
 }
 
-void LfpDisplayNode::copyToEventChannel(uint32 src,
+void LfpDisplayNode::copyToEventChannel(uint32 /*src*/,
                                         int t0,
                                         int t1,
                                         float value) {
   int dispBufSamps = displayBuffer->getNumSamples();
-  int chan = channelForEventSource[src];
+  int chan = channelForEvents;
   int destStart = t0 + displayBufferIndex[chan];
   int n = t1 - t0;
   while (destStart + n >= dispBufSamps) {
@@ -217,17 +209,20 @@ void LfpDisplayNode::copyToEventChannel(uint32 src,
 void LfpDisplayNode::finalizeEventChannels() {
   for (int i=0; i<eventSourceNodes.size(); ++i) {
     uint32 src = eventSourceNodes[i];
-    int chan = channelForEventSource[src];
+    int chan = channelForEvents;
     int index = displayBufferIndex[chan];
     int nSamples = getNumSourceSamples(src);
     int t0 = 0;
     for (EventValueChange const &evc: eventValueChanges[src]) {
       int t1 = evc.eventTime;
-      copyToEventChannel(src, t0, t1, ttlState[src]);
-      if (evc.eventVal>0)
+      copyToEventChannel(src, t0, t1, aggTTLState);
+      if (evc.eventVal>0) {
         ttlState[src] |= evc.eventVal;
-      else
+        aggTTLState |= evc.eventVal;
+      } else {
         ttlState[src] &= ~evc.eventVal;
+        recalcAggTTLState();
+      }
       t0 = t1;
     }
     copyToEventChannel(src, t0, nSamples, ttlState[src]);
@@ -236,6 +231,12 @@ void LfpDisplayNode::finalizeEventChannels() {
     if (latestCurrentTrigger>=0)
       latestTrigger = latestCurrentTrigger + index;
   }
+}
+
+void LfpDisplayNode::recalcAggTTLState() {
+  aggTTLState = 0;
+  for (auto const &kv: ttlState)
+    aggTTLState |= kv.second;
 }
 
 void LfpDisplayNode::copyDataToDisplay(int chan, AudioSampleBuffer &srcbuf) {

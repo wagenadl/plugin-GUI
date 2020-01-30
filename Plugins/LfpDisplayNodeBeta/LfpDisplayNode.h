@@ -66,7 +66,6 @@ public:
     int getDisplayBufferIndex (int chan) const { return displayBufferIndex[chan]; }
 
     CriticalSection* getMutex() { return &displayMutex; }
-  std::list<int> eventStateChannels() const;
   void setTriggerSource(int ch);
   int getTriggerSource() const;
   int64 getLatestTriggerTime() const;
@@ -80,7 +79,7 @@ void copyToEventChannel(uint32 src, int t0, int t1, float value);
 
     Array<int> displayBufferIndex;
     Array<uint32> eventSourceNodes;
-    std::map<uint32, int> channelForEventSource;
+  int channelForEvents;
   struct EventValueChange {
     int eventTime;
     int eventVal; // positive to set, negative to clear
@@ -97,12 +96,13 @@ void copyToEventChannel(uint32 src, int t0, int t1, float value);
 
     int64 bufferTimestamp;
     std::map<uint32, uint64> ttlState;
+    uint64 aggTTLState;
     float* arrayOfOnes;
     int totalSamples;
   int triggerSource;
   int64 latestTrigger; // overall timestamp
   int latestCurrentTrigger; // within current input buffer
-
+  void recalcAggTTLState();
     bool resizeBuffer();
 
     CriticalSection displayMutex;
