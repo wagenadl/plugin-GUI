@@ -38,7 +38,7 @@ namespace LfpViewer {
 class LfpDisplayNode;
 
 class LfpTimescale;
-!class LfpDisplay;
+class LfpDisplay;
 class LfpChannelDisplay;
 class LfpChannelDisplayInfo;
 class EventDisplayInterface;
