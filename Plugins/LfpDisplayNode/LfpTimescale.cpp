@@ -30,6 +30,8 @@ using namespace LfpViewer;
 
 
 #include "LfpTimescale.h"
+#include "LfpDisplay.h"
+#include "LfpDisplayOptions.h"
 
 // -------------------------------------------------------------
 

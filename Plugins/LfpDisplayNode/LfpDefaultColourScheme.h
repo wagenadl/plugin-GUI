@@ -25,6 +25,7 @@
 #define __LFPDEFAULTCOLORSCHEME_H__
 
 #include <VisualizerWindowHeaders.h>
+#include "LfpChannelColourScheme.h"
 
 namespace LfpViewer
 {

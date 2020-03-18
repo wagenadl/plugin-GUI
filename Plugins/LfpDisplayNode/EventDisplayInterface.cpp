@@ -30,6 +30,7 @@ using namespace LfpViewer;
 
 
 #include "EventDisplayInterface.h"
+#include "LfpDisplay.h"
 
 // Event display Options --------------------------------------------------------------------
 

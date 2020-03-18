@@ -25,6 +25,7 @@
 #define __LFPDISPLAYOPTIONS_H__
 
 #include <VisualizerWindowHeaders.h>
+#include "ShowHideOptionsButton.h"
 
 namespace LfpViewer
 {

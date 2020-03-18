@@ -29,8 +29,8 @@ using namespace LfpViewer;
 
 
 
-#include "LfpSupersampledBitmapPlotter.h"
-
+#include "SupersampledBitmapPlotter.h"
+#include "LfpDisplay.h"
 
 SupersampledBitmapPlotter::SupersampledBitmapPlotter(LfpDisplay * lfpDisplay)
     : LfpBitmapPlotter(lfpDisplay)

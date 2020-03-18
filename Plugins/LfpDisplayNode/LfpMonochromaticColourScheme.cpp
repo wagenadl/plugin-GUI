@@ -29,7 +29,8 @@ using namespace LfpViewer;
 
 
 
-#include "LfpMonochromaticColorScheme.h"
+#include "LfpMonochromaticColourScheme.h"
+#include "LfpDisplay.h"
 
 
 LfpMonochromaticColourScheme::LfpMonochromaticColourScheme(LfpDisplay* display, LfpDisplayCanvas* canvas)

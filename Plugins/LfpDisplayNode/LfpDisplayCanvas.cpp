@@ -30,7 +30,11 @@ using namespace LfpViewer;
 
 
 #include "LfpDisplayCanvas.h"
-
+#include "LfpViewport.h"
+#include "LfpDisplay.h"
+#include "LfpTimescale.h"
+#include "LfpDisplayOptions.h"
+#include "LfpChannelDisplayInfo.h"
 
 LfpDisplayCanvas::LfpDisplayCanvas(LfpDisplayNode* processor_) :
      timebase(1.0f), displayGain(1.0f),   timeOffset(0.0f), 

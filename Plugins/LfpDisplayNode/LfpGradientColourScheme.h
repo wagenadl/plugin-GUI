@@ -25,6 +25,7 @@
 #define __LFPGRADIENTCOLOURSCHEME_H__
 
 #include <VisualizerWindowHeaders.h>
+#include "LfpMonochromaticColourScheme.h"
 
 namespace LfpViewer
 {

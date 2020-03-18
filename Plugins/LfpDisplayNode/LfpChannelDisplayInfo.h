@@ -25,6 +25,7 @@
 #define __LFPCHANNELDISPLAYINFO_H__
 
 #include <VisualizerWindowHeaders.h>
+#include "LfpChannelDisplay.h"
 
 namespace LfpViewer
 {

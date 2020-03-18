@@ -30,6 +30,12 @@ using namespace LfpViewer;
 
 
 #include "LfpDisplayOptions.h"
+#include "LfpChannelDisplayInfo.h"
+#include "LfpDisplay.h"
+#include "LfpChannelColourScheme.h"
+#include "EventDisplayInterface.h"
+#include "LfpTimescale.h"
+#include "LfpViewport.h"
 
 // -------------------------------------------------------------
 

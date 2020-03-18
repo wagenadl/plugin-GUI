@@ -30,7 +30,7 @@ using namespace LfpViewer;
 
 
 #include "PerPixelBitmapPlotter.h"
-
+#include "LfpDisplay.h"
 
 PerPixelBitmapPlotter::PerPixelBitmapPlotter(LfpDisplay * lfpDisplay)
     : LfpBitmapPlotter(lfpDisplay)

@@ -30,6 +30,15 @@ using namespace LfpViewer;
 
 
 #include "LfpDisplay.h"
+#include "PerPixelBitmapPlotter.h"
+#include "LfpBitmapPlotter.h"
+#include "SupersampledBitmapPlotter.h"
+#include "LfpGradientColourScheme.h"
+#include "LfpMonochromaticColourScheme.h"
+#include "LfpDefaultColourScheme.h"
+#include "LfpChannelDisplay.h"
+#include "LfpChannelDisplayInfo.h"
+#include "LfpDisplayOptions.h"
 
 // ---------------------------------------------------------------
 

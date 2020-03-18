@@ -25,6 +25,7 @@
 #define __PERPIXELBITMAPPLOTTER_H__
 
 #include <VisualizerWindowHeaders.h>
+#include "LfpBitmapPlotter.h"
 
 namespace LfpViewer
 {

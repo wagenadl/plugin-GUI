@@ -18,7 +18,7 @@ add_sources(${PLUGIN_NAME}
 	LfpChannelColourScheme.h
 	LfpChannelDisplay.h
 	LfpChannelDisplayInfo.h
-	LfpDefaultColorScheme.h
+	LfpDefaultColourScheme.h
 	LfpDisplay.h
 	LfpDisplayOptions.h
 	LfpGradientColourScheme.h
@@ -36,8 +36,8 @@ add_sources(${PLUGIN_NAME}
 	LfpDisplay.cpp
 	LfpDisplayOptions.cpp
 	LfpGradientColourScheme.cpp
-	LfpMonochromaticColorScheme.cpp
-	LfpSupersampledBitmapPlotter.cpp
+	LfpMonochromaticColourScheme.cpp
+	SupersampledBitmapPlotter.cpp
 	LfpTimescale.cpp
 	LfpViewport.cpp
 	PerPixelBitmapPlotter.cpp

@@ -30,7 +30,7 @@ using namespace LfpViewer;
 
 
 #include "LfpGradientColourScheme.h"
-
+#include "LfpDisplay.h"
 
 LfpGradientColourScheme::LfpGradientColourScheme(LfpDisplay * display, LfpDisplayCanvas * canvas)
     : LfpMonochromaticColourScheme(display, canvas)

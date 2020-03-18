@@ -30,6 +30,10 @@ using namespace LfpViewer;
 
 
 #include "LfpChannelDisplay.h"
+#include "LfpDisplayOptions.h"
+#include "LfpDisplay.h"
+#include "LfpBitmapPlotterInfo.h"
+#include "LfpBitmapPlotter.h"
 
 // ------------------------------------------------------------------
 
