@@ -28,6 +28,20 @@ add_sources(${PLUGIN_NAME}
 	PerPixelBitmapPlotter.h
 	ShowHideOptionsButton.h
 	SupersampledBitmapPlotter.h        
+	EventDisplayInterface.cpp
+	LfpChannelColourScheme.cpp
+	LfpChannelDisplay.cpp
+	LfpChannelDisplayInfo.cpp
+	LfpDefaultColourScheme.cpp
+	LfpDisplay.cpp
+	LfpDisplayOptions.cpp
+	LfpGradientColourScheme.cpp
+	LfpMonochromaticColorScheme.cpp
+	LfpSupersampledBitmapPlotter.cpp
+	LfpTimescale.cpp
+	LfpViewport.cpp
+	PerPixelBitmapPlotter.cpp
+	ShowHideOptionsButton.cpp
 	)
 	
 #optional: create IDE groups
