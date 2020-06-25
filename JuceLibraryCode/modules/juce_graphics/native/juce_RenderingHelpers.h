@@ -678,10 +678,10 @@ namespace EdgeTableFillers
 
                         while (width > 4)
                         {
-                            int* d = reinterpret_cast<int*> (dest);
+                          int* d = (int*)/*reinterpret_cast<int*>*/ (dest);
                             *d++ = intFiller[0];
                             *d++ = intFiller[1];
-                            *d++ = intFiller[2];
+                            *d++ = intFiller[2]; // using three ints to fill 4 rgb values. Weird! - DAW
                             dest = reinterpret_cast<PixelRGB*> (d);
                             width -= 4;
                         }
