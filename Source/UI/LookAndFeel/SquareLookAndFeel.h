@@ -70,7 +70,7 @@ struct SquareLookAndFeel    : public FlatRoundLookAndFeel
                              .withMultipliedAlpha (component.isEnabled() ? 1.0f : 0.7f));
         g.setColour (colour);
 
-        Rectangle<float> r (x, y + (h - boxSize) * 0.5f, boxSize, boxSize);
+        juce::Rectangle<float> r (x, y + (h - boxSize) * 0.5f, boxSize, boxSize);
         g.fillRect (r);
 
         if (ticked)
@@ -103,13 +103,13 @@ struct SquareLookAndFeel    : public FlatRoundLookAndFeel
             {
                 kx = x + width * 0.5f;
                 ky = sliderPos;
-                g.fillRect (Rectangle<float> (kx - sliderRadius, ky - 2.5f, sliderRadius * 2.0f, 5.0f));
+                g.fillRect (juce::Rectangle<float> (kx - sliderRadius, ky - 2.5f, sliderRadius * 2.0f, 5.0f));
             }
             else
             {
                 kx = sliderPos;
                 ky = y + height * 0.5f;
-                g.fillRect (Rectangle<float> (kx - 2.5f, ky - sliderRadius, 5.0f, sliderRadius * 2.0f));
+                g.fillRect (juce::Rectangle<float> (kx - 2.5f, ky - sliderRadius, 5.0f, sliderRadius * 2.0f));
             }
         }
         else
@@ -135,7 +135,7 @@ struct SquareLookAndFeel    : public FlatRoundLookAndFeel
         const Colour baseColour (slider.isEnabled() ? slider.findColour (Slider::rotarySliderFillColourId).withAlpha (isMouseOver ? 0.8f : 1.0f)
                                                     : Colour (0x80808080));
 
-        Rectangle<float> r (rx, ry, rw, rw);
+        juce::Rectangle<float> r (rx, ry, rw, rw);
         AffineTransform t (AffineTransform::rotation (angle, r.getCentreX(), r.getCentreY()));
 
         float x1 = r.getTopLeft().getX(), y1 = r.getTopLeft().getY(), x2 = r.getBottomLeft().getX(), y2 = r.getBottomLeft().getY();
@@ -150,7 +150,7 @@ struct SquareLookAndFeel    : public FlatRoundLookAndFeel
         g.fillPath (knob, t);
 
         Path needle;
-        Rectangle<float> r2 (r * 0.1f);
+        juce::Rectangle<float> r2 (r * 0.1f);
         needle.addRectangle (r2.withPosition (Point<float> (r.getCentreX() - (r2.getWidth() / 2.0f), r.getY())));
 
         g.setColour (slider.findColour (Slider::rotarySliderOutlineColourId));

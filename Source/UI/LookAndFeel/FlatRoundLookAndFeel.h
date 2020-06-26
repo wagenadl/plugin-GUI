@@ -31,7 +31,7 @@ struct FlatRoundLookAndFeel    : public LookAndFeel_V3
     void drawRoundThumb (Graphics& g, const float x, const float y,
                          const float diameter, const Colour& colour, float outlineThickness)
     {
-        const Rectangle<float> a (x, y, diameter, diameter);
+      const juce::Rectangle<float> a (x, y, diameter, diameter);
         const float halfThickness = outlineThickness * 0.5f;
 
         Path p;
@@ -207,7 +207,7 @@ struct FlatRoundLookAndFeel    : public LookAndFeel_V3
         if (slider.isHorizontal())
         {
             const float iy = y + height * 0.5f - sliderRadius * 0.5f;
-            Rectangle<float> r (x - sliderRadius * 0.5f, iy, width + sliderRadius, sliderRadius);
+            juce::Rectangle<float> r (x - sliderRadius * 0.5f, iy, width + sliderRadius, sliderRadius);
             const float onW = r.getWidth() * ((float) slider.valueToProportionOfLength (slider.getValue()));
 
             on.addRectangle (r.removeFromLeft (onW));
@@ -216,7 +216,7 @@ struct FlatRoundLookAndFeel    : public LookAndFeel_V3
         else
         {
             const float ix = x + width * 0.5f - sliderRadius * 0.5f;
-            Rectangle<float> r (ix, y - sliderRadius * 0.5f, sliderRadius, height + sliderRadius);
+            juce::Rectangle<float> r (ix, y - sliderRadius * 0.5f, sliderRadius, height + sliderRadius);
             const float onH = r.getHeight() * ((float) slider.valueToProportionOfLength (slider.getValue()));
 
             on.addRectangle (r.removeFromBottom (onH));
